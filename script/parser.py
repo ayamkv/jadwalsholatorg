@@ -16,6 +16,12 @@ from datetime import datetime
 tz = pytz.timezone('Asia/Jakarta')
 base_url = 'https://jadwalsholat.org/jadwal-sholat/monthly.php'
 
+def removeSpaces(string):
+
+    string = string.replace(' ','')
+
+    return string
+
 def strip_lower(str):
 
     return re.sub(r'\W+', '', str).lower()
@@ -53,8 +59,9 @@ def get_adzans(city_id, month = '', year = '') :
 
     for row in rows:
         data = row.xpath('td//text()')
+        date_data = removeSpaces(data[0])
         result.append({
-            'tanggal': '{}-{}-{}'.format(year, month, data[0]),
+            'tanggal': '{}-{}-{}'.format(year, month, date_data),
             'imsyak': data[3],
             'shubuh': data[4],
             'terbit': data[5],
