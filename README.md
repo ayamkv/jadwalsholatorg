@@ -1,4 +1,4 @@
-# JadwalSholatOrg a
+# JadwalSholatOrg A
 
 Parsed data from website https://jadwalsholat.org
 
